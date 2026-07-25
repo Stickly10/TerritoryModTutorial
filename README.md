@@ -54,7 +54,7 @@ ModExample为Mod示例教程，每个文件夹打开后，还有相关简要说�
 
 7.Mod开发测试
 
-	将正在开发的Mod中的所有文件（注意，不在包含Mod文件夹本身），复制到*C:/TerritoryModTest*文件夹中，游戏启动时会自动加载此MOD
+	将正在开发的Mod中的所有文件（注意，*不要*包含Mod文件夹本身），复制到*C:/TerritoryModTest*文件夹中，游戏启动时会自动加载此MOD
 	
 	如果要测试多个Mod，可以将多个Mod（注意，需包含Mod自身的文件夹），复制到*C:/TerritoryModTestBatch*文件夹中，游戏启动时会自动加载这些Mod.(注意，系统不会检查Mod重复，调试时需注意这个问题）
 
