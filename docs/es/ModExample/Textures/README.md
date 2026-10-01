@@ -1,32 +1,42 @@
-# Nota
+# Imágenes y texturas: Textures
 
-Esta carpeta contiene las imágenes que utiliza el mod. El sistema carga automáticamente las imágenes que se encuentran aquí y el mod puede utilizarlas mediante una interfaz común. El documento original señala que esta función está en desarrollo.
+[Tutorial principal](../../README.md) · [Estructura de carpetas](../README.md) · [Original en chino](../../../../ModExample/Textures/README.md)
 
-# Tutorial
+Esta carpeta contiene las imágenes del mod y su configuración. El sistema las carga para sustituir recursos existentes o añadir otros.
 
-Las imágenes que el juego utiliza actualmente se guardan en la carpeta `ModExample\Textures\Images being used in the game`.
+El documento original señala que esta función está en desarrollo; los ejemplos de esta página reflejan lo documentado por el autor.
 
-Para modificar una imagen, guárdala en la carpeta `Textures` del mod y configura después sus datos en `textures.xml`.
+## Preparar una imagen
 
-La estructura de los datos es la siguiente:
+1. Consulta los recursos de referencia en `ModExample/Textures/Images being used in the game`.
+2. Guarda la imagen que quieras usar en `Textures`, dentro de tu mod.
+3. Regístrala en `Textures/textures.xml`, siguiendo la estructura del [archivo de ejemplo](../../../../ModExample/Textures/textures.xml).
+
+Este ejemplo completo conserva el contenedor `ModImages` del archivo original y registra una sola imagen:
 
 ```xml
-<Image
-  file="kingdom_treasure_box_0.png"
-  action="replace"
-  anchor="0,0"
+<ModImages version="1">
+  <Image
+    file="kingdom_treasure_box_0.png"
+    action="replace"
+    anchor="0,0"
   />
+</ModImages>
 ```
 
-`file` es el nombre del archivo de imagen.
+| Atributo | Significado |
+| --- | --- |
+| `file` | Nombre del archivo de imagen. |
+| `action` | `replace` sustituye una imagen del juego; `add` añade una nueva. |
+| `anchor` | Punto de anclaje usado para alinear la imagen. El tutorial indica normalmente `0,0` para edificios y `0.5,0.5` para otras imágenes. |
 
-`action` indica la acción: usa `replace` para sustituir una imagen original del juego y `add` para añadir una imagen nueva.
+Si una imagen queda desalineada, revisa su valor de `anchor`.
 
-`anchor` es el punto de anclaje para alinear la imagen. Por lo general, el anclaje de las imágenes de edificios es `"0,0"` y el de las demás imágenes es `"0.5,0.5"`. Si la imagen queda desalineada, puedes probar a modificar este valor.
+## Utilizar la imagen
 
-En la mayoría de las imágenes basta con configurar el nombre en la tabla de datos correspondiente dentro de `ModExample\Defs` para que surtan efecto.
+En la mayoría de los casos basta con indicar su nombre en la tabla de datos correspondiente de [Defs](../Defs/README.md).
 
-Si necesitas llamar a una imagen o modificarla desde el código, los métodos habituales son:
+Si necesitas asignarla desde C#, el tutorial muestra estas dos operaciones. `sprite_name` representa el nombre del recurso que quieres utilizar.
 
 Para un elemento `Image` de la interfaz, representado por la variable `img`:
 
@@ -39,5 +49,3 @@ O para un elemento `MySpriteRenderer` de la escena, representado por `sp_body`:
 ```csharp
 sp_body.sprite_id = SpriteManager.Ins.TryGetSpriteId(sprite_name);
 ```
-
-[Volver al índice en español](../../README.md) · [Ver el original en chino](../../../../ModExample/Textures/README.md)
